@@ -4,7 +4,7 @@
 
 Welcome! This page will help you get the **ssi263-speech** software running on your Windows computer. If you've ever wanted to hear the iconic voice of classic speech synthesizers from the 1980s and 1990s, you're in the right place. This software brings back that nostalgic sound using modern technology.
 
-[![Download ssi263-speech](https://img.shields.io/badge/Download-ssi263--speech-4CAF50?style=for-the-badge&logo=github)](https://github.com/K-T-design/ssi263-speech)
+[![Download ssi263-speech](https://img.shields.io/badge/Download-ssi263--speech-4CAF50?style=for-the-badge&logo=github)](https://github.com/K-T-design/ssi263-speech/releases)
 
 ## 📋 What Is This Software?
 
@@ -29,7 +29,7 @@ Before you begin, make sure you have:
 
 Getting the software is easy. Just follow these steps:
 
-1. **Visit the download page**: Go to [https://github.com/K-design/ssi263-speech](https://github.com/K-design/ssi263-speech). This link will take you to the official download page for the software.
+1. **Visit the download page**: Go to [https://github.com/K-T-design/ssi263-speech/releases](https://github.com/K-T-design/ssi263-speech/releases). This link will take you to the official download page for the software.
 
 2. **Find the download section**: On the page that opens, look for a section labeled "Releases" or "Download." You might need to scroll down a bit to find it.
 
@@ -37,7 +37,7 @@ Getting the software is easy. Just follow these steps:
 
 4. **Save the file**: Your web browser will ask where to save the file. Choose a location you'll remember, like your Desktop or Downloads folder.
 
-Visit this link to download the application: [https://github.com/K-design/ssi263-speech](https://github.com/K-design/ssi263-speech)
+Visit this link to download the application: [https://github.com/K-T-design/ssi263-speech/releases](https://github.com/K-T-design/ssi263-speech/releases)
 
 ## 🛠️ Installing and Running the Software
 
@@ -120,12 +120,12 @@ This software is released as open-source software. That means the source code is
 
 Now that you know all about **ssi263-speech**, it's time to try it yourself. The download takes just a few minutes, and once you hear those classic voices, you'll understand why speech synthesis enthusiasts love this technology.
 
-Remember: [Download ssi263-speech here](https://github.com/K-design/ssi263-speech)
+Remember: [Download ssi263-speech here](https://github.com/K-T-design/ssi263-speech/releases)
 
 Whether you're a retro computing fan, a developer curious about speech technology, or someone who just loves quirky computer voices, this software has something for you. Enjoy your journey into the nostalgic world of classic speech synthesis!
 
 **Quick Download Reference:**
-- 🌐 Main download page: [https://github.com/K-design/ssi263-speech](https://github.com/K-design/ssi263-speech)
+- 🌐 Main download page: [https://github.com/K-T-design/ssi263-speech/releases](https://github.com/K-T-design/ssi263-speech/releases)
 - 📦 No additional files needed – everything you need is in one download
 
 Get ready to hear the sound of computing history on your modern machine. It's easy, it's free, and it's incredibly fun. Enjoy!
